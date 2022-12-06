@@ -1,0 +1,49 @@
+﻿@model ferromax.Models.Empleados
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Empleados</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="nombresEmpleados" class="control-label"></label>
+                <input asp-for="nombresEmpleados" class="form-control" />
+                <span asp-validation-for="nombresEmpleados" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="apellidosEmpleados" class="control-label"></label>
+                <input asp-for="apellidosEmpleados" class="form-control" />
+                <span asp-validation-for="apellidosEmpleados" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="telefonoEmpleados" class="control-label"></label>
+                <input asp-for="telefonoEmpleados" class="form-control" />
+                <span asp-validation-for="telefonoEmpleados" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="emailEmpleados" class="control-label"></label>
+                <input asp-for="emailEmpleados" class="form-control" />
+                <span asp-validation-for="emailEmpleados" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
