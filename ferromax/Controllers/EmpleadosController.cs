@@ -20,9 +20,15 @@ namespace ferromax.Controllers
         }
 
         // GET: Empleados
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            return View(await _context.empleados.ToListAsync());
+            var empleados = from c in _context.empleados select c;
+            if (!string.IsNullOrEmpty(search))
+            {
+                empleados = empleados.Where(s => s.nombresEmpleados.Contains(search));
+            }
+
+            return View(await empleados.ToListAsync());
         }
 
         // GET: Empleados/Details/5

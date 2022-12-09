@@ -20,9 +20,15 @@ namespace ferromax.Controllers
         }
 
         // GET: Compras
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            return View(await _context.compras.ToListAsync());
+            var compras = from c in _context.compras select c;
+            if (!string.IsNullOrEmpty(search))
+            {
+                compras = compras.Where(s => s.nombreProducto.Contains(search));
+            }
+
+            return View(await compras.ToListAsync());
         }
 
         // GET: Compras/Details/5

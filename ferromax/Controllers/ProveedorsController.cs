@@ -20,9 +20,15 @@ namespace ferromax.Controllers
         }
 
         // GET: Proveedors
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            return View(await _context.proveedors.ToListAsync());
+            var Proveedores = from c in _context.proveedors select c;
+            if (!string.IsNullOrEmpty(search))
+            {
+                Proveedores = Proveedores.Where(s => s.nombreProveedor.Contains(search));
+            }
+
+            return View(await Proveedores.ToListAsync());
         }
 
         // GET: Proveedors/Details/5

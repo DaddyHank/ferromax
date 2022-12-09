@@ -10,5 +10,7 @@ namespace ferromax.Models
         public int Id { get; set; }
         public string nombreProducto { get; set; }
         public float precioVenta { get; set; }
+
+
     }
 }
